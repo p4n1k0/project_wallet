@@ -2,14 +2,14 @@
 export const USER_ACTION = 'USER_ACTION';
 export const CURRENCIES_ACTION = 'CURRENCIES_ACTION';
 
-const userAction = (state) => ({
+const userAction = (email) => ({
   type: USER_ACTION,
-  payload: state,
+  email,
 });
 
-const currenciesAction = (state) => ({
+const currenciesAction = (payload) => ({
   type: CURRENCIES_ACTION,
-  payload: state,
+  payload,
 });
 
 export const apiFetch = () => async (dispatch) => {
