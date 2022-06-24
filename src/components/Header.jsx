@@ -1,8 +1,15 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { apiFetch } from '../actions/currencies';
 
 class Header extends Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch(apiFetch());
+  }
+
   render() {
     const { email } = this.props;
 
@@ -11,7 +18,7 @@ class Header extends Component {
         <header>
           <span data-testid="email-field">{`Email:${email}`}</span>
           <span data-testid="total-field">0</span>
-          <span data-testid="header-currency-field">BRL</span>
+          <p data-testid="header-currency-field">BRL</p>
         </header>
       </section>
     );
@@ -24,6 +31,7 @@ const mapStateToProps = (state) => ({
 
 Header.propTypes = {
   email: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps)(Header);

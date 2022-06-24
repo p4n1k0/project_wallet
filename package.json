@@ -58,6 +58,6 @@
     "stylelint": "13.8.0",
     "react-error-overlay": "6.0.9",
     "stylelint-config-standard": "20.0.0",
-    "eslint-config-trybe-frontend": "1.2.3"
+    "eslint-config-trybe-frontend": "1.2.3"    
   }
 }
