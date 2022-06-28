@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { apiFetch } from '../actions/currencies';
+import { apiFetch } from '../actions';
 
 class Header extends Component {
   componentDidMount() {
