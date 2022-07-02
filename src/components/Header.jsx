@@ -1,13 +1,19 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { apiFetch } from '../actions';
 
 class Header extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
+  constructor() {
+    super();
+    this.handleSum = this.handleSum.bind(this);
+  }
 
-    dispatch(apiFetch());
+  handleSum() {
+    const { expenses } = this.props;
+    const sumExpenses = expenses.map((expense) => Number(expense.value)
+      * Number(expense.exchangeRates[expense.currency].ask))
+      .reduce((exp1, exp2) => exp1 + exp2, 0);
+    return sumExpenses.toFixed(2);
   }
 
   render() {
@@ -17,7 +23,7 @@ class Header extends Component {
       <section>
         <header>
           <span data-testid="email-field">{`Email:${email}`}</span>
-          <span data-testid="total-field">0</span>
+          <span data-testid="total-field">{this.handleSum()}</span>
           <p data-testid="header-currency-field">BRL</p>
         </header>
       </section>
@@ -27,11 +33,14 @@ class Header extends Component {
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
+  expenses: state.wallet.expenses,
 });
 
 Header.propTypes = {
   email: PropTypes.string.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  expenses: PropTypes.arrayOf(Object),
 };
+
+Header.defaultProps = { expenses: PropTypes.array };
 
 export default connect(mapStateToProps)(Header);
