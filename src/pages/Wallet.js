@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { apiFetch, coins } from '../actions';
 import Header from '../components/Header';
+import Table from '../components/Table';
 
 class Wallet extends React.Component {
   constructor() {
@@ -67,6 +68,7 @@ class Wallet extends React.Component {
   render() {
     const { currencies } = this.props;
     const { value, description } = this.state;
+
     return (
       <section>
         <Header />
@@ -120,6 +122,7 @@ class Wallet extends React.Component {
         >
           Adicionar despesa
         </button>
+        <Table />
       </section>
     );
   }
