@@ -1,18 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { apiFetch, deleteAction } from '../actions';
 
 class Table extends Component {
-  remove = ({ target }) => {
-    const { name } = target;
-    const { expenses, removeItem } = this.props;
-    const arrayList = expenses.filter((expense) => expense.id !== Number(name));
-
-    removeItem(arrayList);
-  }
-
   render() {
-    const { expenses } = this.props;
+    const { expenses, deleteExpense } = this.props;
 
     return (
       <table>
@@ -42,13 +35,14 @@ class Table extends Component {
             <td>Real</td>
             <td>
               {' '}
+            </td>
+            <td>
               <button
                 type="button"
-                name={ expense.id }
                 data-testid="delete-btn"
-                onClick={ this.remove }
+                onClick={ () => deleteExpense(expense.id) }
               >
-                X
+                x
               </button>
             </td>
           </tr>
@@ -61,17 +55,18 @@ class Table extends Component {
 const mapStateToProps = (state) => ({ expenses: state.wallet.expenses });
 
 const mapDispatchToProps = (dispatch) => ({
-  removeItem: (gastos) => dispatch(deleteAction(gastos)),
+  addExpense: (expenses) => dispatch(apiFetch(expenses)),
+  deleteExpense: (expense) => dispatch(deleteAction(expense)),
 });
 
 Table.propTypes = {
   expenses: PropTypes.arrayOf(Object),
-  removeItem: PropTypes.func,
+  deleteExpense: PropTypes.func,
 }.isRequired;
 
 Table.defaultProps = {
   expenses: PropTypes.array,
-  removeItem: PropTypes.func,
+  deleteExpense: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
