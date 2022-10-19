@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { apiFetch, deleteAction } from '../actions';
+import { deleteAction } from '../actions';
 
 class Table extends Component {
   render() {
@@ -17,7 +17,6 @@ class Table extends Component {
         <th>Câmbio utilizado</th>
         <th>Valor convertido</th>
         <th>Moeda de conversão</th>
-        <th>Editar/Excluir</th>
         {expenses.map((expense) => (
           <tr key={ expense.id }>
             <td>{expense.description}</td>
@@ -33,16 +32,15 @@ class Table extends Component {
               ).toFixed(2)}
             </td>
             <td>Real</td>
+            <th>Editar</th>
             <td>
-              {' '}
-            </td>
-            <td>
+              /
               <button
                 type="button"
                 data-testid="delete-btn"
                 onClick={ () => deleteExpense(expense.id) }
               >
-                x
+                Excluir
               </button>
             </td>
           </tr>
@@ -55,7 +53,6 @@ class Table extends Component {
 const mapStateToProps = (state) => ({ expenses: state.wallet.expenses });
 
 const mapDispatchToProps = (dispatch) => ({
-  addExpense: (expenses) => dispatch(apiFetch(expenses)),
   deleteExpense: (expense) => dispatch(deleteAction(expense)),
 });
 
