@@ -66,7 +66,7 @@ Através dessa aplicação, é possível realizar as operações básicas de cri
 - Instale as dependências:
   - `npm install`
 - Inicialize o projeto:
-  - `npm start` (uma nova página deve abrir no seu navegador com um texto simples)
+  - `npm start` (visualizar o projeto)
 - Verifique que os testes estão executando:
   - `npm test` (os testes devem rodar e falhar)
 
