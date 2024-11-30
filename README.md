@@ -12,7 +12,6 @@ Aqui você vai encontrar os detalhes de como foi estruturar o desenvolvimento do
 - [Entregáveis](#entregáveis)
   - [O que foi desenvolvido](#o-que-foi-desenvolvido)
   - [Desenvolvimento](#desenvolvimento)
-  - [Durante o desenvolvimento](#durante-o-desenvolvimento)
 - [Como desenvolver](#como-desenvolver)
   - [Linter](#linter)
   - [Configurando o Redux DevTools](#configurando-o-redux-devtools)
