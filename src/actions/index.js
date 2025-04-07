@@ -1,8 +1,8 @@
-// Coloque aqui suas actions
 export const USER_ACTION = 'USER_ACTION';
 export const CURRENCIES_ACTION = 'CURRENCIES_ACTION';
 export const COINS_ACTION = 'COINS_ACTION';
 export const DELETE_ACTION = 'DELETE_ACTION';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 
 export const userAction = (email) => ({
   type: USER_ACTION,
@@ -24,8 +24,17 @@ export const deleteAction = (id) => ({
   id,
 });
 
+export const editExpenseAction = (expense, id) => ({
+  type: EDIT_EXPENSE,
+  payload: {
+    id,
+    ...expense,
+  },
+});
+
+const url = 'https://economia.awesomeapi.com.br/json/all';
 export const apiFetch = () => async (dispatch) => {
-  const endpoint = await fetch('https://economia.awesomeapi.com.br/json/all');
+  const endpoint = await fetch(url);
   const data = await endpoint.json();
   const currencyFilter = Object.keys(data).filter((currency) => currency !== 'USDT');
 
@@ -33,7 +42,7 @@ export const apiFetch = () => async (dispatch) => {
 };
 
 export const coins = (expense) => async (dispatch) => {
-  const endpoint = await fetch('https://economia.awesomeapi.com.br/json/all');
+  const endpoint = await fetch(url);
   const exchangeRates = await endpoint.json();
   const { id, value, description, currency, method, tag } = expense;
   const result = { id, value, description, currency, method, tag, exchangeRates };

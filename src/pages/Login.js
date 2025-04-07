@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { userAction } from '../actions';
 
-class Login extends React.Component {
+class Login extends Component {
   constructor() {
     super();
 
@@ -34,11 +34,8 @@ class Login extends React.Component {
     const re = /\S+@\S+\.\S+/;
     const minCharacter = 6;
 
-    if (re.test(email) === true && password.length + 1 >= minCharacter) {
-      this.setState({ button: false });
-    } else {
-      this.setState({ button: true });
-    }
+    if (re.test(email) === true && password.length + 1 >= minCharacter) this.setState({ button: false });
+    else this.setState({ button: true });
   };
 
   handleButton = () => {
@@ -59,7 +56,7 @@ class Login extends React.Component {
             type="email"
             data-testid="email-input"
             required
-            onChange={ this.handleEmail }
+            onChange={this.handleEmail}
           />
         </label>
         <label htmlFor="password">
@@ -69,10 +66,10 @@ class Login extends React.Component {
             data-testid="password-input"
             minLength="6"
             required
-            onChange={ this.handlePassword }
+            onChange={this.handlePassword}
           />
         </label>
-        <button type="button" disabled={ button } onClick={ this.handleButton }>
+        <button type="button" disabled={button} onClick={this.handleButton}>
           Entrar
         </button>
       </section>
