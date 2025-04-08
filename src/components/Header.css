@@ -1,0 +1,25 @@
+header {
+    background-color: hsla(158, 83%, 54%, 0.911);
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+  }
+  
+  .email {
+    display: flex;
+    width: 20%;
+  }
+  
+  .email p {
+    margin-right: 10px;
+  }
+  
+  .total_expense {
+    display: flex;
+    width: 30%;
+  }
+  
+  .total_expense p {
+    margin-right: 25px;
+  }
+  

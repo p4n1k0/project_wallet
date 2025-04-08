@@ -5,7 +5,6 @@ import { apiFetch, coins, editExpenseAction } from '../actions';
 import Header from '../components/Header';
 import Table from '../components/Table';
 
-
 const INITIAL_STATE = {
   id: 0,
   value: '',
@@ -79,18 +78,19 @@ class Wallet extends Component {
 
   render() {
     const { currencies } = this.props;
-    const { value, description, newOrEdit } = this.state;
+    const { value, description } = this.state;
 
     return (
-      <section>
+      <form>
         <Header />
         <label htmlFor="value">
           Valor
           <input
             type="number"
             data-testid="value-input"
-            onChange={this.handleValue}
-            value={value}
+            onChange={ this.handleValue }
+            value={ value }
+            size={ 10 }
           />
         </label>
         <label htmlFor="currencies">
@@ -98,9 +98,10 @@ class Wallet extends Component {
           <select
             id="currencies"
             data-testid="currency-input"
-            onChange={this.handleCurrency}>
-            {currencies.map((currencySelect, index) => (
-              <option key={index}>{currencySelect}</option>))}
+            onChange={ this.handleCurrency }
+          >
+            { currencies.map((currencySelect, index) => (
+              <option key={ index }>{ currencySelect }</option>)) }
           </select>
         </label>
         <label htmlFor="methodInput">
@@ -108,7 +109,7 @@ class Wallet extends Component {
           <select
             id="methodInput"
             data-testid="method-input"
-            onChange={this.handleMethod}
+            onChange={ this.handleMethod }
           >
             <option>Dinheiro</option>
             <option>Cartão de crédito</option>
@@ -119,7 +120,7 @@ class Wallet extends Component {
           <select
             id="tag"
             data-testid="tag-input"
-            onChange={this.handleTag}
+            onChange={ this.handleTag }
           >
             <option>Alimentação</option>
             <option>Lazer</option>
@@ -129,27 +130,28 @@ class Wallet extends Component {
           </select>
         </label>
         <label htmlFor="description">
-          Description
+          Descrição
           <input
             data-testid="description-input"
-            value={description}
-            onChange={this.handleDescription}
+            value={ description }
+            onChange={ this.handleDescription }
+            size={ 10 }
           />
         </label>
         <button
-          type="submit"
-          onClick={this.handleButton}
+          type="button"
+          onClick={ this.handleButton }
         >
           Adicionar despesa
         </button>
         <button
-          type="submit"
-          onClick={this.saveEditedExpense}
+          type="button"
+          onClick={ this.saveEditedExpense }
         >
           Editar despesa
         </button>
         <Table />
-      </section>
+      </form>
     );
   }
 }

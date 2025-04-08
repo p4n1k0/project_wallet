@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteAction } from '../actions';
+import { deleteAction, editExpenseAction } from '../actions';
+import './Table.css';
 
-
-class Table extends Component { 
-  editExpense = (id) => {
-    this.setState({ newOrEdit: 'edit', id });
-  }
-
+class Table extends Component {
   render() {
-    const { expenses, deleteActio } = this.props;
+    const { expenses, deleteActio, editAction } = this.props;
     return (
       <div>
-        <table>
+        <table className="tabela">
           <thead>
             <tr>
               <th>Descrição</th>
@@ -35,27 +31,27 @@ class Table extends Component {
               const currencyValue = currentCurrency[1].ask;
               const total = expense.value * currencyValue;
               return (
-                <tr key={expense.id}>
-                  <td>{expense.description}</td>
-                  <td>{expense.tag}</td>
-                  <td>{expense.method}</td>
-                  <td>{Number(expense.value).toFixed(2)}</td>
-                  <td>{nameCurrency[0]}</td>
-                  <td>{Number(currencyValue).toFixed(2)}</td>
-                  <td>{total.toFixed(2)}</td>
+                <tr key={ expense.id }>
+                  <td>{ expense.description }</td>
+                  <td>{ expense.tag }</td>
+                  <td>{ expense.method }</td>
+                  <td>{ Number(expense.value).toFixed(2) }</td>
+                  <td>{ nameCurrency[0] }</td>
+                  <td>{ Number(currencyValue).toFixed(2) }</td>
+                  <td>{ total.toFixed(2) }</td>
                   <td>Real</td>
                   <td>
                     <button
                       data-testid="edit-btn"
                       type="button"
-                      onClick={() => this.editExpense(expense.id)}
+                      onClick={ () => editAction(expense.id) }
                     >
                       Editar
                     </button>
                     <button
                       type="button"
                       data-testid="delete-btn"
-                      onClick={() => deleteActio(expense.id)}
+                      onClick={ () => deleteActio(expense.id) }
                     >
                       Excluir
                     </button>
@@ -70,8 +66,9 @@ class Table extends Component {
 }
 
 Table.propTypes = {
-  expenses: PropTypes.array.isRequired,
+  expenses: PropTypes.arrayOf(Array).isRequired,
   deleteActio: PropTypes.func.isRequired,
+  editAction: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -82,6 +79,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (dispatch) => ({
   deleteActio: (expense) => dispatch(deleteAction(expense)),
+  editAction: (expense) => dispatch(editExpenseAction(expense)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
