@@ -15,12 +15,12 @@
     justify-content: center;
     margin-top: 10%;
     padding: 90px;
+    background-color: rgb(219, 215, 240);
 }
 
 
 .container input {
     align-items: center;
-    border: 1px solid #e1e5eb;
     display: flex;
     justify-content: center;
     margin: 1px;
@@ -43,5 +43,5 @@
 }
 
 .container button:disabled {
-    background-color: rgba(128, 128, 128, 0.301);
+    background-color: rgba(88, 8, 8, 0.144);
 }

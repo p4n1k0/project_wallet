@@ -4,25 +4,13 @@ export const COINS_ACTION = 'COINS_ACTION';
 export const DELETE_ACTION = 'DELETE_ACTION';
 export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 
-export const userAction = (email) => ({
-  type: USER_ACTION,
-  email,
-});
+export const userAction = (email) => ({ type: USER_ACTION, email });
 
-export const currenciesAction = (payload) => ({
-  type: CURRENCIES_ACTION,
-  payload,
-});
+export const currenciesAction = (payload) => ({ type: CURRENCIES_ACTION, payload });
 
-export const coinsAction = ({ ...payload }) => ({
-  type: COINS_ACTION,
-  payload,
-});
+export const coinsAction = ({ ...payload }) => ({ type: COINS_ACTION, payload });
 
-export const deleteAction = (id) => ({
-  type: DELETE_ACTION,
-  id,
-});
+export const deleteAction = (id) => ({ type: DELETE_ACTION, id });
 
 export const editExpenseAction = (expense, id) => ({
   type: EDIT_EXPENSE,

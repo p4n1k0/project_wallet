@@ -56,7 +56,7 @@ class Login extends Component {
       <div className="container">
         <form>
           <label htmlFor="email">
-            Email
+            <p>E-mail:</p>
             <input
               type="email"
               data-testid="email-input"
@@ -65,7 +65,7 @@ class Login extends Component {
             />
           </label>
           <label htmlFor="password">
-            Senha
+            <p>Senha:</p>
             <input
               type="password"
               data-testid="password-input"
@@ -74,7 +74,11 @@ class Login extends Component {
               onChange={ this.handlePassword }
             />
           </label>
-          <button type="button" disabled={ button } onClick={ this.handleButton }>
+          <button
+            type="button"
+            disabled={ button }
+            onClick={ this.handleButton }
+          >
             Entrar
           </button>
         </form>

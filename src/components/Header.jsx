@@ -24,12 +24,10 @@ class Header extends Component {
       <section>
         <header>
           <div className="email">
-            <p>E-mail:</p>
-            <span data-testid="email-field">{email}</span>
+            <span data-testid="email-field">{`E-mail: ${email}`}</span>
           </div>
           <div className="total_expense">
-            <p>Despesa Total R$:</p>
-            <p data-testid="total-field">{this.handleSum()}</p>
+            <p data-testid="total-field">{`Despesa:${this.handleSum()}`}</p>
             <p data-testid="header-currency-field">BRL</p>
           </div>
         </header>
