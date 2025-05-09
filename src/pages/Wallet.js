@@ -156,11 +156,6 @@ class Wallet extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  currencies: state.wallet.currencies,
-  expenses: state.wallet.expenses,
-});
-
 Wallet.propTypes = {
   dispatch: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(Array).isRequired,
@@ -170,5 +165,10 @@ Wallet.propTypes = {
 Wallet.defaultProps = {
   expenses: PropTypes.array,
 };
+
+const mapStateToProps = (state) => ({
+  currencies: state.wallet.currencies,
+  expenses: state.wallet.expenses,
+});
 
 export default connect(mapStateToProps)(Wallet);

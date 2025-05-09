@@ -14,6 +14,7 @@ class Header extends Component {
     const sumExpenses = expenses.map((expense) => Number(expense.value)
       * Number(expense.exchangeRates[expense.currency].ask))
       .reduce((exp1, exp2) => exp1 + exp2, 0);
+
     return sumExpenses.toFixed(2);
   }
 
@@ -27,7 +28,7 @@ class Header extends Component {
             <span data-testid="email-field">{`E-mail: ${email}`}</span>
           </div>
           <div className="total_expense">
-            <p data-testid="total-field">{`Despesa:${this.handleSum()}`}</p>
+            <p data-testid="total-field">{`${this.handleSum()}`}</p>
             <p data-testid="header-currency-field">BRL</p>
           </div>
         </header>
@@ -36,16 +37,16 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  email: state.user.email,
-  expenses: state.wallet.expenses,
-});
-
 Header.propTypes = {
   email: PropTypes.string.isRequired,
   expenses: PropTypes.arrayOf(Object),
 };
 
 Header.defaultProps = { expenses: PropTypes.array };
+
+const mapStateToProps = (state) => ({
+  email: state.user.email,
+  expenses: state.wallet.expenses,
+});
 
 export default connect(mapStateToProps)(Header);

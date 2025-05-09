@@ -4,15 +4,16 @@ import { connect } from 'react-redux';
 import { userAction } from '../actions';
 import './Login.css';
 
+const INITIAL_STATE = {
+  button: true,
+  email: '',
+  password: '',
+};
+
 class Login extends Component {
   constructor() {
     super();
-
-    this.state = {
-      button: true,
-      email: '',
-      password: '',
-    };
+    this.state = INITIAL_STATE;
   }
 
   handleEmail = ({ target }) => {
@@ -33,13 +34,10 @@ class Login extends Component {
   loginValidate = () => {
     const { email, password } = this.state;
     const re = /\S+@\S+\.\S+/;
-    const minCharacter = 6;
+    const six = 6;
 
-    if (re.test(email) === true && password.length + 1 >= minCharacter) {
-      this.setState({ button: false });
-    } else {
-      this.setState({ button: true });
-    }
+    if (re.test(email) && password.length + 1 >= six) this.setState({ button: false });
+    else this.setState({ button: true });
   };
 
   handleButton = () => {
@@ -52,6 +50,7 @@ class Login extends Component {
 
   render() {
     const { button } = this.state;
+
     return (
       <div className="container">
         <form>

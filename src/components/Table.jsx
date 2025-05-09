@@ -7,6 +7,7 @@ import './Table.css';
 class Table extends Component {
   render() {
     const { expenses, deleteActio, editAction } = this.props;
+
     return (
       <div>
         <table className="tabela">
@@ -71,11 +72,9 @@ Table.propTypes = {
   editAction: PropTypes.func.isRequired,
 };
 
-function mapStateToProps(state) {
-  return {
-    expenses: state.wallet.expenses,
-  };
-}
+const mapStateToProps = (state) => ({
+  expenses: state.wallet.expenses,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   deleteActio: (expense) => dispatch(deleteAction(expense)),
