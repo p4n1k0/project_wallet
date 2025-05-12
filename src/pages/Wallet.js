@@ -72,6 +72,7 @@ class Wallet extends Component {
     const { dispatch } = this.props;
     const { value, description, currency, method, tag, id } = this.state;
     const expense = { value, description, currency, method, tag };
+
     dispatch(editExpenseAction(expense, id));
     this.setState(INITIAL_STATE);
   }

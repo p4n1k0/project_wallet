@@ -68,8 +68,6 @@ class Login extends Component {
             <input
               type="password"
               data-testid="password-input"
-              minLength="6"
-              required
               onChange={ this.handlePassword }
             />
           </label>
