@@ -1,4 +1,4 @@
-# Boas vindas ao repositório do projeto Wallet
+# Boas vindas ao repositório do projeto GTWallet
 
 Aqui você vai encontrar os detalhes de como foi estruturar o desenvolvimento do projeto a partir deste repositório.
 
@@ -9,14 +9,10 @@ Aqui você vai encontrar os detalhes de como foi estruturar o desenvolvimento do
 - [Boas vindas ao repositório do projeto Wallet!](#boas-vindas-ao-repositório-do-projeto-wallet)
 - [Sumário](#sumário)
 - [Habilidades](#habilidades)
-- [Entregáveis](#entregáveis)
   - [O que foi desenvolvido](#o-que-foi-desenvolvido)
   - [Desenvolvimento](#desenvolvimento)
-- [Como desenvolver](#como-desenvolver)
-  - [Linter](#linter)
-  - [Configurando o Redux DevTools](#configurando-o-redux-devtools)
   - [Documentação da API de Cotações de Moedas](#documentação-da-api-de-cotações-de-moedas)
-  - [Execução de testes unitários](#execução-dos-testes)
+  
 ---
 
 # Habilidades
@@ -36,8 +32,6 @@ Neste projeto, sou capaz de:
 - Criar actions assíncronas na sua aplicação React que faz uso de Redux.
 
 ---
-
-# Entregáveis
 
 ## O que foi desenvolvido
 
@@ -67,44 +61,15 @@ Através dessa aplicação, é possível realizar as operações básicas de cri
   - `npm install`
 - Inicialize o projeto:
   - `npm start` (visualizar o projeto)
+  - https://gtwallet.surge.sh
 - Verifique que os testes estão executando:
-  - `npm test` (os testes devem rodar e falhar)
+  - `npm test` 
 
 ---
 
-# Como desenvolver
-
-Nessa aplicação você deverá **obrigatoriamente** utilizar o seguinte formato do estado global:
-
-```
-{
-  user: {
-    email: '',
-  },
-  wallet: {
-    currencies: [],
-    expenses: []
-  }
-}
-```
-
-É importante respeitar esse formato para que o avaliador funcione corretamente. Você pode adicionar novos campos ao seu estado global, mas essa estrutura básica deve se manter. Por exemplo, você pode adicionar uma propriedade `isFetching` no seu estado. Mas você **não** pode salvar as despesas em uma chave diferente de `wallet.expenses`.
-
-**Observações Importantes:**
-
-- Devido a estrutura que o avaliador utiliza para realizar os testes, é necessário que o seu Redux esteja configurado, ou seja, a store e os reducers estejam criados e conectados.
-- É necessário que o `<Provider />` e o seu `<BrowserRouter />` estejam no arquivo index.js e não no `<App />`.
-- Também será necessário a instalação da biblioteca PropTypes utilizando o comando `npm install prop-types`.
-
-## Linter
-
-Para garantir a qualidade do código, vamos utilizar neste projeto o linter ESLint. Assim o código estará alinhado com as boas práticas de desenvolvimento, sendo mais legível e de fácil manutenção! Para rodar o _linter_ localmente no projeto, execute o comando abaixo:
-
-`npm run lint`
-
 ## Documentação da API de Cotações de Moedas
 
-Sua página _web_ consome os dados da API do _awesomeapi API de Cotações_ para realizar a busca de câmbio de moedas. Para realizar essas buscas, é consultado o seguinte _endpoint_:
+Minha página _web_ consome os dados da API do _awesomeapi API de Cotações_ para realizar a busca de câmbio de moedas. Para realizar essas buscas, é consultado o seguinte _endpoint_:
 
 - <https://economia.awesomeapi.com.br/json/all>
 
@@ -132,44 +97,6 @@ O retorno desse endpoint será algo no formato:
 ```
 
 Se você quiser aprender mais informações sobre a API, veja a [documentação](https://docs.awesomeapi.com.br/api-de-moedas).
-
----
-
-## Execução dos testes
-
-Vamos utilizar [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) para execução dos testes.
-
-Esse _framework_ de testes utiliza algumas marcações no código para verificar a solução proposta, uma dessas marcações é o atributo `data-testid` e faremos uso dele aqui.
-
-Na descrição dos requisitos (logo abaixo) será pedido que seja feita a adição de atributos `data-testid` nos elementos _HTML_. Vamos a um exemplo para deixar nítida essa configuração:
-
-Se o requisito pedir "crie um botão e adicione o id de teste (ou `data-testid`) com o valor `my-action`, você pode criar:
-
-```html
-<button data-testid="my-action"></button>
-```
-
-ou
-
-```html
-<a data-testid="my-action"><a /></a>
-```
-
-ou seja, o atributo `data-testid="my-action"` servirá para o React Testing Library(RTL) identificar o elemento e dessa forma, conseguiremos realizar testes focados no comportamento da aplicação.
-
-Em alguns requisitos, utilizamos o `getByRole` para poder selecionar os elementos de forma semântica. Portanto atente-se às instruções de cada requisito. Por exemplo, se o requisito pedir explicitamente um `button`, você deverá utilizar exatamente esse elemento.
-
-Afim de verificar a solução proposta, você pode executar todos os testes localmente, basta executar:
-
-```bash
-npm test
-```
-
-### Dica: desativando testes
-
-Para rodar apenas um teste, basta a utilização da função `.only` após o describe. Com isso, será possível que apenas um requisito rode localmente e seja avaliado.
-
-Caso queira avaliar apenas um tópico do requisito, você também pode usar o `.only` após o `test`.
 
 ---
 
