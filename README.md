@@ -47,6 +47,8 @@ Desenvolvimento de uma aplicação em React que usa Redux como ferramenta de man
 
 Através dessa aplicação, é possível realizar as operações básicas de criação e manipulação de um estado de redux.
 
+Obs: Testes implementados pelo time da trybe.
+
 ## Antes de começar a desenvolver
 
 1. Clone o repositório
